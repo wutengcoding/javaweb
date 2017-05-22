@@ -1,0 +1,52 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>jdbcUrl</param-name>
+        <param-value>jdbc:///spring4</param-value>
+    </context-param>
+    <!-- 配置和映射servlet-->
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>com.wutengcoding.javaweb.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>1234</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>customerServlet</servlet-name>
+        <servlet-class>com.wutengcoding.mvcapp.servlet.CustomerServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>customerServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+</web-app>
